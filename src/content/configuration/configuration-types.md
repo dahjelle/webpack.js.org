@@ -24,7 +24,7 @@ One option is to export a function from your webpack config instead of exporting
 -module.exports = {
 +module.exports = function(env, argv) {
 +  return {
-+    devtool: env.production ? 'source-maps' : 'eval',
++    devtool: argv.mode === 'production' ? 'source-maps' : 'eval',
      plugins: [
        new webpack.optimize.UglifyJsPlugin({
 +        compress: argv['optimize-minimize'] // only if -p or --optimize-minimize were passed
